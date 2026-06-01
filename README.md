@@ -1,91 +1,91 @@
 <div align="center">
   <h2>
     <img src="https://cdn.nodeimage.com/i/NXz3ah3zTwikq3AdQOU0dYw3uyaBiGVj.webp" width="40" height="40" style="vertical-align: middle;"/> 
-    nodejs-argo隧道代理
+    nodejs-argo Tunnel Proxy
   </h2>
-  nodejs-argo是一个强大的Argo隧道部署工具，专为PaaS平台和游戏玩具平台设计。它支持多种代理协议（VLESS、VMess、Trojan等），并集成了哪吒探针功能。
+  nodejs-argo is a powerful Argo tunnel deployment tool designed specifically for PaaS platforms and playground/toy environments. It supports multiple proxy protocols (VLESS, VMess, Trojan, etc.) and integrates Nezha Probe functionality.
 
 ---
 
-Telegram交流反馈群组：https://t.me/eooceu
+Telegram Communication & Feedback Group: https://t.me/eooceu
 </div>
 
-## 郑重声明
-* 本项目自2025年10月29日15时45分起,已更改开源协议,并包含以下特定要求
-* 此项目仅限个人使用，禁止用于商业行为(包括但不限于：youtube,bilibili,tiktok,facebook..等等)
-* 禁止新建项目将代码复制到自己仓库中用做商业行为
-* 请遵守当地法律法规,禁止滥用做公共代理行为
-* 如有违反以上条款者将追究法律责任
+## Solemn Declaration
+* As of October 29, 2025, at 15:45, this project has modified its open-source license and includes the following specific requirements:
+* This project is strictly for personal use. Commercial use is forbidden (including but not limited to: YouTube, Bilibili, TikTok, Facebook, etc.).
+* It is forbidden to create new projects by copying this code into your own repository for commercial purposes.
+* Please abide by local laws and regulations; using this tool as a public proxy or abusing it is strictly prohibited.
+* Legal action will be pursued against anyone who violates the above terms.
 
-## 说明 （部署前请仔细阅读）
+## Description (Please read carefully before deployment)
 
-* 本项目是针对node环境的paas平台和游戏玩具而生，采用Argo隧道部署节点，集成哪吒探针v0或v1可选。
-* node玩具平台只需上传index.js和package.json即可，paas平台需要docker部署的才上传Dockerfile。
-* 不填写ARGO_DOMAIN和ARGO_AUTH两个变量即启用临时隧道，反之则使用固定隧道。
-* 哪吒v0/v1可选,当哪吒端口为{443,8443,2096,2087,2083,2053}其中之一时，自动开启tls。
+* This project is built for Node.js environments on PaaS platforms and playground/toy servers. It deploys nodes via Argo tunnels and features optional integration with Nezha Probe v0 or v1.
+* For Node toy platforms, you only need to upload `index.js` and `package.json`. Upload the `Dockerfile` only if your PaaS platform requires Docker deployment.
+* Leaving the `ARGO_DOMAIN` and `ARGO_AUTH` variables blank will enable a temporary tunnel. Providing values will use a fixed tunnel instead.
+* Nezha v0/v1 is optional. When the Nezha port matches one of the following: {443, 8443, 2096, 2087, 2083, 2053}, TLS will be enabled automatically.
 
-## 📋 环境变量
+## 📋 Environment Variables
 
-| 变量名 | 是否必须 | 默认值 | 说明 |
-|--------|----------|--------|------|
-| UPLOAD_URL | 否 | - | 订阅上传地址 |
-| PROJECT_URL | 否 | https://www.google.com | 项目分配的域名 |
-| AUTO_ACCESS | 否 | false | 是否开启自动访问保活 |
-| PORT | 否 | 3000 | HTTP服务监听端口 |
-| ARGO_PORT | 否 | 8001 | Argo隧道端口 |
-| UUID | 否 | 89c13786-25aa-4520-b2e7-12cd60fb5202 | 用户UUID |
-| NEZHA_SERVER | 否 | - | 哪吒面板域名 |
-| NEZHA_PORT | 否 | - | 哪吒端口 |
-| NEZHA_KEY | 否 | - | 哪吒密钥 |
-| ARGO_DOMAIN | 否 | - | Argo固定隧道域名 |
-| ARGO_AUTH | 否 | - | Argo固定隧道密钥 |
-| CFIP | 否 | www.visa.com.tw | 节点优选域名或IP |
-| CFPORT | 否 | 443 | 节点端口 |
-| NAME | 否 | Vls | 节点名称前缀 |
-| FILE_PATH | 否 | ./tmp | 运行目录 |
-| SUB_PATH | 否 | sub | 订阅路径 |
 
-## 🌐 订阅地址
+| Variable Name | Required | Default Value | Description |
+|---|---|---|---|
+| UPLOAD_URL | No | - | Subscription upload address |
+| PROJECT_URL | No | https://www.google.com | Domain name assigned to the project |
+| AUTO_ACCESS | No | false | Whether to enable automatic access for keep-alive |
+| PORT | No | 3000 | HTTP service listening port |
+| ARGO_PORT | No | 8001 | Argo tunnel port |
+| UUID | No | 89c13786-25aa-4520-b2e7-12cd60fb5202 | User UUID |
+| NEZHA_SERVER | No | - | Nezha dashboard domain |
+| NEZHA_PORT | No | - | Nezha port |
+| NEZHA_KEY | No | - | Nezha secret key |
+| ARGO_DOMAIN | No | - | Argo fixed tunnel domain |
+| ARGO_AUTH | No | - | Argo fixed tunnel token/auth |
+| CFIP | No | www.visa.com.tw | Cloudflare optimized domain or IP for nodes |
+| CFPORT | No | 443 | Node port |
+| NAME | No | Vls | Node name prefix |
+| FILE_PATH | No | ./tmp | Runtime directory |
+| SUB_PATH | No | sub | Subscription path |
 
-- 标准端口：`https://your-domain.com/sub`
-- 非标端口：`http://your-domain.com:port/sub`
+## 🌐 Subscription Addresses
+
+- Standard Port: `https://your-domain.com/sub`
+- Non-standard Port: `http://your-domain.com:port/sub`
 
 ---
 
-## 🚀 进阶使用
+## 🚀 Advanced Usage
 
-### 安装
+### Installation
 
 ```bash
-# 全局安装（推荐）
+# Global installation (Recommended)
 npm install -g nodejs-argo
 
-# 或者使用yarn
+# Or using yarn
 yarn global add nodejs-argo
 
-# 或者使用pnpm
+# Or using pnpm
 pnpm add -g nodejs-argo
 ```
 
-### 基本使用
+### Basic Usage
 
 ```bash
-# 直接运行（使用默认配置）
+# Run directly (using default configurations)
 nodejs-argo
 
-# 使用npx运行
+# Run using npx
 npx nodejs-argo
 
-# 设置环境变量运行
- PORT=3000 npx nodejs-argo
+# Run with environment variables set
+PORT=3000 npx nodejs-argo
 ```
 
-### 环境变量配置
+### Environment Variable Configuration
 
-可使用 `.env` 文件来配置环境变量运行
+You can use a `.env` file to configure environment variables for running.
 
-
-或者直接在命令行中设置：
+Or set them directly in the command line:
 
 ```bash
 export UPLOAD_URL="https://your-merge-sub-domain.com"
@@ -96,7 +96,7 @@ export NEZHA_SERVER="nz.your-domain.com:8008"
 export NEZHA_KEY="your-nezha-key"
 ```
 
-## 📦 作为npm模块使用
+## 📦 Usage as an npm Module
 
 ```javascript
 // CommonJS
@@ -105,56 +105,57 @@ const nodejsArgo = require('nodejs-argo');
 // ES6 Modules
 import nodejsArgo from 'nodejs-argo';
 
-// 启动服务
+// Start service
 nodejsArgo.start();
 ```
 
-## 🔧 后台运行
+## 🔧 Running in the Background
 
-### 使用screen（推荐）
+### Using screen (Recommended)
 ```bash
-# 创建screen会话
+# Create a screen session
 screen -S argo
 
-# 运行应用
+# Run the application
 nodejs-argo
 
-# 按 Ctrl+A 然后按 D 分离会话
-# 重新连接：screen -r argo
+# Press Ctrl+A then D to detach the session
+# Reconnect using: screen -r argo
 ```
 
-### 使用tmux
+### Using tmux
 ```bash
-# 创建tmux会话
+# Create a tmux session
 tmux new-session -d -s argo
 
-# 运行应用
+# Run the application
 tmux send-keys -t argo "nodejs-argo" Enter
 
-# 分离会话：tmux detach -s argo
-# 重新连接：tmux attach -t argo
+# Detach the session: tmux detach -s argo
+# Reconnect using: tmux attach -t argo
 ```
 
-### 使用PM2
+### Using PM2
 ```bash
-# 安装PM2
+# Install PM2
 npm install -g pm2
 
-# 启动应用
+# Start the application
 pm2 start nodejs-argo --name "argo-service"
 
-# 管理应用
+# Manage the application
 pm2 status
 pm2 logs argo-service
 pm2 restart argo-service
 ```
 
-### 使用systemd（Linux系统服务）
+### Using systemd (Linux System Service)
 ```bash
-# 创建服务文件
+# Create the service file
 sudo nano /etc/systemd/system/nodejs-argo.service
-
 ```
+
+```ini
 [Unit]
 Description=Node.js Argo Service
 After=network.target
@@ -173,31 +174,32 @@ RestartSec=10
 WantedBy=multi-user.target
 ```
 
-# 启动服务
+```bash
+# Start the service
 sudo systemctl start nodejs-argo
 sudo systemctl enable nodejs-argo
 ```
 
-## 🔄 更新
+## 🔄 Updates
 
 ```bash
-# 更新全局安装的包
+# Update globally installed package
 npm update -g nodejs-argo
 
-# 或者重新安装
+# Or reinstall
 npm uninstall -g nodejs-argo
 npm install -g nodejs-argo
 ```
 
-## 📚 更多信息
+## 📚 More Information
 
-- [GitHub仓库](https://github.com/eooce/nodejs-argo)
-- [npm包页面](https://www.npmjs.com/package/nodejs-argo)
-- [问题反馈](https://github.com/eooce/nodejs-argo/issues)
+- [GitHub Repository](https://github.com/eooce/nodejs-argo)
+- [npm Package Page](https://www.npmjs.com/package/nodejs-argo)
+- [Issue Feedback](https://github.com/eooce/nodejs-argo/issues)
 
 ---
 
-## 赞助
-* 感谢[VPS.Town](https://vps.town)提供赞助 <a href="https://vps.town" target="_blank"><img src="https://vps.town/static/images/sponsor.png" width="30%" alt="https://vps.town"></a>
+## Sponsorship
+* Thanks to [VPS.Town](https://vps.town) for sponsoring. <a href="https://vps.town" target="_blank"><img src="https://vps.town/static/images/sponsor.png" width="30%" alt="https://vps.town"></a>
 
-* 感谢[ZMTO](https://zmto.com/?affid=1548)提供赞助优质双isp vps。
+* Thanks to [ZMTO](https://zmto.com/?affid=1548) for sponsoring premium dual-ISP VPS.
