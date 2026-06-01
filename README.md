@@ -191,15 +191,6 @@ npm uninstall -g nodejs-argo
 npm install -g nodejs-argo
 ```
 
-## 📚 More Information
 
-- [GitHub Repository](https://github.com/eooce/nodejs-argo)
-- [npm Package Page](https://www.npmjs.com/package/nodejs-argo)
-- [Issue Feedback](https://github.com/eooce/nodejs-argo/issues)
 
----
 
-## Sponsorship
-* Thanks to [VPS.Town](https://vps.town) for sponsoring. <a href="https://vps.town" target="_blank"><img src="https://vps.town/static/images/sponsor.png" width="30%" alt="https://vps.town"></a>
-
-* Thanks to [ZMTO](https://zmto.com/?affid=1548) for sponsoring premium dual-ISP VPS.
